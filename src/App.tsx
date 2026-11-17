@@ -225,7 +225,7 @@ function Services({ navigate }: { navigate: (path: Route) => void }) {
 function Particuliers({ navigate }: { navigate: (path: Route) => void }) {
   return <PageHero eyebrow="Déménagement de particuliers" title={<>Votre projet,<br /><i>notre attention.</i></>} intro="Appartement, maison ou logement étudiant : nous vous accompagnons avec une organisation claire, de la préparation des cartons à l’installation à destination." action={() => navigate('/devis')} actionLabel="Demander mon devis">
     <section className="container section detail-page">
-      <div className="detail-photo photo-home"><span>Photo fournie par l’entreprise</span></div>
+      <div className="detail-photo photo-home" />
       <div className="detail-copy">
         <div className="section-label">Un accompagnement complet</div>
         <h2>Chaque meuble mérite <i>d’être protégé.</i></h2>
@@ -247,14 +247,14 @@ function Entreprises({ navigate }: { navigate: (path: Route) => void }) {
         <div className="check-list"><span>✓ Transfert de bureaux</span><span>✓ Protection du matériel informatique</span><span>✓ Mobilier professionnel</span><span>✓ Chargement et transport planifiés</span></div>
         <button className="button button-dark" onClick={() => navigate('/devis')}>Demander un devis entreprise <span>→</span></button>
       </div>
-      <div className="detail-photo photo-office"><span>Photo fournie par l’entreprise</span></div>
+      <div className="detail-photo photo-office" />
     </section>
   </PageHero>
 }
 
 function Realisations({ navigate }: { navigate: (path: Route) => void }) {
   const photos = [['Maisons', 'photo-home'], ['Appartements', 'photo-boxes'], ['Bureaux', 'photo-office'], ['Protection du mobilier', 'photo-protection'], ['Chargement & transport', 'photo-truck'], ['Emballage', 'photo-packing']]
-  return <PageHero eyebrow="Nos réalisations" title={<>Le soin du geste,<br /><i>en images.</i></>} intro="Galerie basée sur les images fournies par Vauclair Déménagement." action={() => navigate('/devis')} actionLabel="Demander un devis"><section className="container section gallery-grid">{photos.map(([label, className]) => <figure key={label} className={`gallery-card ${className}`}><span>Photo fournie par l’entreprise</span><figcaption>{label}</figcaption></figure>)}</section></PageHero>
+  return <PageHero eyebrow="Nos réalisations" title={<>Le soin du geste,<br /><i>en images.</i></>} intro="Galerie basée sur les images fournies par Vauclair Déménagement." action={() => navigate('/devis')} actionLabel="Demander un devis"><section className="container section gallery-grid">{photos.map(([label, className]) => <figure key={label} className={`gallery-card ${className}`}><figcaption>{label}</figcaption></figure>)}</section></PageHero>
 }
 
 function Company({ navigate }: { navigate: (path: Route) => void }) {

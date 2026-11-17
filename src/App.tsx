@@ -193,7 +193,6 @@ function Home({ navigate }: { navigate: (path: Route) => void }) {
           <div className="sun-shape" />
           <div className="arch arch-one" /><div className="arch arch-two" />
           <div className="box box-one">V</div><div className="box box-two">V</div><div className="box box-three">V</div>
-          <div className="art-note"><span>PHOTO VAUCLAIR</span><strong>Visuel fourni<br />par l’entreprise</strong></div>
         </div>
       </div>
     </section>

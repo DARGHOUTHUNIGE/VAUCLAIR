@@ -275,7 +275,7 @@ function QuotePage() {
 }
 
 function Contact() {
-  return <section className="form-page"><div className="container contact-layout"><div><p className="eyebrow">Nous contacter</p><h1>Un échange simple,<br /><i>un départ serein.</i></h1><p className="hero-lead">Notre équipe est disponible pour répondre à vos questions et vous guider dans votre projet.</p><div className="contact-details"><p><small>Téléphone devis</small><a href="tel:+33780971094">07 80 97 10 94</a></p><p><small>Email</small>À compléter</p><p><small>Agence</small>Adresse à compléter</p></div></div><QuoteForm compact /></div></section>
+  return <section className="form-page"><div className="container contact-layout"><div><p className="eyebrow">Nous contacter</p><h1>Un échange simple,<br /><i>un départ serein.</i></h1><p className="hero-lead">Notre équipe est disponible pour répondre à vos questions et vous guider dans votre projet.</p><div className="contact-details"><p><small>Téléphone devis</small><a href="tel:+33780971094">07 80 97 10 94</a></p></div></div><QuoteForm compact /></div></section>
 }
 
 function QuoteForm({ compact = false }: { compact?: boolean }) {
@@ -308,7 +308,7 @@ function LegalPage({ title }: { title: string }) {
 }
 
 function Footer({ navigate }: { navigate: (path: Route) => void }) {
-  return <footer><div className="container footer-grid"><div><button className="brand footer-brand" onClick={() => navigate('/')}><VauclairLogo /></button><p>Votre déménagement,<br />notre engagement.</p></div><div><h4>Navigation</h4>{navItems.slice(1, 6).map((item) => <button key={item.path} onClick={() => navigate(item.path)}>{item.label}</button>)}</div><div><h4>Devis & contact</h4><a href="tel:+33780971094">07 80 97 10 94</a><span>Email à compléter</span><span>Agence à compléter</span></div></div><div className="container footer-bottom"><span>© 2026 Vauclair Déménagement</span><div><button onClick={() => navigate('/mentions-legales')}>Mentions légales</button><button onClick={() => navigate('/politique-confidentialite')}>Confidentialité</button><button onClick={() => navigate('/cgv')}>CGV</button></div></div></footer>
+  return <footer><div className="container footer-grid"><div><button className="brand footer-brand" onClick={() => navigate('/')}><VauclairLogo /></button><p>Votre déménagement,<br />notre engagement.</p></div><div><h4>Navigation</h4>{navItems.slice(1, 6).map((item) => <button key={item.path} onClick={() => navigate(item.path)}>{item.label}</button>)}</div><div><h4>Devis & contact</h4><a href="tel:+33780971094">07 80 97 10 94</a></div></div><div className="container footer-bottom"><span>© 2026 Vauclair Déménagement</span><div><button onClick={() => navigate('/mentions-legales')}>Mentions légales</button><button onClick={() => navigate('/politique-confidentialite')}>Confidentialité</button><button onClick={() => navigate('/cgv')}>CGV</button></div></div></footer>
 }
 
 export default App

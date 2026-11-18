@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import type { FormEvent } from 'react'
 import './App.css'
+import { trackQuoteConversion } from './google-ads'
 
 type Route = '/' | '/particuliers' | '/entreprises' | '/services' | '/realisations' | '/a-propos' | '/devis' | '/contact' | '/cgv' | '/mentions-legales' | '/politique-confidentialite'
 
@@ -290,6 +291,7 @@ function QuoteForm({ compact = false }: { compact?: boolean }) {
     try {
       const response = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(values) })
       if (!response.ok) throw new Error('La demande n’a pas pu être envoyée.')
+      trackQuoteConversion(`quote-${crypto.randomUUID()}`)
       setSent(true)
     } catch (submissionError) {
       setError(submissionError instanceof Error ? submissionError.message : 'Une erreur est survenue. Appelez-nous directement.')

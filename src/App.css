@@ -5,6 +5,8 @@
 .site-header { background:var(--cream); border-bottom:1px solid var(--line); position:relative; z-index:5; }
 .header-row { min-height:86px; display:flex; align-items:center; justify-content:space-between; }
 .brand { border:0; background:none; display:flex; align-items:center; gap:11px; color:var(--ink); padding:0; text-align:left; }
+.official-logo { display:block; width:auto; height:64px; max-width:260px; object-fit:contain; }
+.footer-brand .official-logo { height:58px; }
 .brand-mark { width:40px; height:40px; display:grid; place-items:center; border:2px solid var(--ink); color:var(--ink); background:#fff; border-radius:50%; font-family:Georgia,serif; font-size:20px; font-weight:bold; }
 .logo-lockup { display:flex; align-items:center; gap:10px; text-align:left; }.logo-icon { width:43px; height:43px; display:grid; place-items:center; }.logo-icon svg { width:43px; height:39px; fill:none; stroke:var(--ink); stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round; }.logo-icon .logo-swoosh { stroke-width:2; }.logo-type strong,.logo-type em,.logo-type small { display:block; font-style:normal; line-height:1; }.logo-type strong { font-size:17px; letter-spacing:.13em; }.logo-type em { font-size:9px; letter-spacing:.2em; font-weight:700; margin-top:5px; }.logo-type small { color:var(--muted); font-size:7px; letter-spacing:.22em; margin-top:5px; }
 .brand strong,.brand em { display:block; font-size:15px; line-height:1.05; font-style:normal; letter-spacing:.08em; }

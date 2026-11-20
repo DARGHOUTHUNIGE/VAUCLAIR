@@ -3,17 +3,19 @@ import type { FormEvent } from 'react'
 import './App.css'
 import { trackQuoteConversion } from './google-ads'
 
+const officialOrigin = 'https://vauclairdemenagement.com'
+
 type Route = '/' | '/particuliers' | '/entreprises' | '/services' | '/realisations' | '/a-propos' | '/devis' | '/contact' | '/cgv' | '/mentions-legales' | '/politique-confidentialite'
 
 const seoByRoute: Record<Route, { title: string; description: string }> = {
-  '/': { title: 'Vauclair Déménagement | Déménagement en toute confiance', description: 'Vauclair Déménagement accompagne particuliers et entreprises pour vos déménagements, emballage, transport et garde-meubles.' },
-  '/particuliers': { title: 'Déménagement particuliers | Vauclair Déménagement', description: 'Déménagement de maisons, appartements et logements étudiants avec protection du mobilier et accompagnement sur mesure.' },
-  '/entreprises': { title: 'Déménagement entreprises | Vauclair Déménagement', description: 'Transfert de bureaux, commerces et locaux professionnels avec une organisation rigoureuse et un planning adapté.' },
-  '/services': { title: 'Prestations de déménagement | Vauclair Déménagement', description: 'Découvrez nos prestations : déménagement, emballage, transport, garde-meubles et monte-meubles.' },
-  '/realisations': { title: 'Réalisations | Vauclair Déménagement', description: 'Découvrez les réalisations et le savoir-faire de Vauclair Déménagement en images.' },
-  '/a-propos': { title: 'À propos | Vauclair Déménagement', description: 'Une expérience professionnelle acquise depuis 1995, au service des particuliers et des entreprises.' },
-  '/devis': { title: 'Demander un devis déménagement | Vauclair', description: 'Demandez votre devis gratuit et sans engagement pour votre déménagement avec Vauclair.' },
-  '/contact': { title: 'Contact | Vauclair Déménagement', description: 'Contactez Vauclair Déménagement pour préparer votre projet et demander un devis gratuit.' },
+  '/': { title: 'Vauclair Déménagement | Particuliers & Entreprises', description: 'Déménagement résidentiel et professionnel en France : emballage, protection du mobilier, transport, monte-meubles et garde-meubles. Devis gratuit.' },
+  '/particuliers': { title: 'Déménagement Particulier | Maison, Appartement & Étudiant', description: 'Confiez votre déménagement particulier à Vauclair : appartement, maison, logement étudiant, emballage et protection du mobilier. Devis gratuit.' },
+  '/entreprises': { title: 'Déménagement d’Entreprise | Bureau & Commerces', description: 'Vauclair organise le déménagement de vos bureaux, commerces et locaux professionnels avec rigueur pour limiter l’interruption de votre activité.' },
+  '/services': { title: 'Services de Déménagement | Emballage & Transport', description: 'Emballage, déballage, transport, déménagement, garde-meubles et monte-meubles : découvrez les prestations sur mesure de Vauclair.' },
+  '/realisations': { title: 'Réalisations de Déménagement | Vauclair', description: 'Découvrez les réalisations de Vauclair Déménagement : maisons, appartements, bureaux, emballage, protection du mobilier et transport.' },
+  '/a-propos': { title: 'À propos de Vauclair | Notre Savoir-Faire', description: 'Découvrez l’expérience professionnelle de Vauclair Déménagement et ses engagements : écoute, respect du mobilier et organisation.' },
+  '/devis': { title: 'Devis Gratuit Déménagement | Vauclair', description: 'Demandez votre devis gratuit de déménagement pour particulier ou entreprise. Recevez une estimation personnalisée selon votre projet.' },
+  '/contact': { title: 'Contacter Vauclair Déménagement | Devis & Questions', description: 'Contactez Vauclair Déménagement par téléphone ou via le formulaire pour préparer votre déménagement et recevoir un devis gratuit.' },
   '/cgv': { title: 'Conditions générales de vente | Vauclair Déménagement', description: 'Consultez les conditions générales de vente de Vauclair Déménagement.' },
   '/mentions-legales': { title: 'Mentions légales | Vauclair Déménagement', description: 'Consultez les mentions légales de Vauclair Déménagement.' },
   '/politique-confidentialite': { title: 'Politique de confidentialité | Vauclair Déménagement', description: 'Consultez la politique de confidentialité de Vauclair Déménagement.' },
@@ -67,7 +69,7 @@ const navItems: { label: string; path: Route }[] = [
 ]
 
 function VauclairLogo() {
-  return <span className="logo-lockup" aria-label="Vauclair Déménagement depuis 1995"><span className="logo-icon" aria-hidden="true"><svg viewBox="0 0 52 46"><path d="M5 25 26 6l21 19" /><path d="M11 21v19h30V21" /><path d="M20 40V29h12v11" /><path d="M20 19h5v5h-5zM28 19h5v5h-5z" /><path className="logo-swoosh" d="M4 35c10 6 25 7 39 1" /></svg></span><span className="logo-type"><strong>VAUCLAIR</strong><em>DÉMÉNAGEMENT</em><small>DEPUIS 1995</small></span></span>
+  return <img className="official-logo" src="/vauclair-logo.jpeg" alt="Vauclair Déménagement - Depuis 1995" />
 }
 
 function isRoute(value: string): value is Route {
@@ -89,7 +91,7 @@ function App() {
 
   useEffect(() => {
     const seo = seoByRoute[route]
-    const canonicalUrl = `${window.location.origin}${route}`
+    const canonicalUrl = `${officialOrigin}${route}`
     document.title = seo.title
     document.documentElement.lang = 'fr'
 
@@ -104,9 +106,15 @@ function App() {
     }
 
     setMeta('meta[name="description"]', 'name', seo.description)
+    setMeta('meta[property="og:type"]', 'property', 'website')
+    setMeta('meta[property="og:locale"]', 'property', 'fr_FR')
     setMeta('meta[property="og:title"]', 'property', seo.title)
     setMeta('meta[property="og:description"]', 'property', seo.description)
     setMeta('meta[property="og:url"]', 'property', canonicalUrl)
+    setMeta('meta[property="og:image"]', 'property', `${officialOrigin}/vauclair-logo.jpeg`)
+    setMeta('meta[name="twitter:card"]', 'name', 'summary')
+    setMeta('meta[name="twitter:title"]', 'name', seo.title)
+    setMeta('meta[name="twitter:description"]', 'name', seo.description)
 
     let canonical = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]')
     if (!canonical) {
@@ -129,9 +137,20 @@ function App() {
       name: 'Vauclair Déménagement',
       description: seo.description,
       telephone: '+33780971094',
-      image: `${window.location.origin}/favicon.svg`,
-      url: window.location.origin,
+      image: `${officialOrigin}/vauclair-logo.jpeg`,
+      url: officialOrigin,
       areaServed: 'France',
+      priceRange: 'Sur devis',
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'Services de déménagement',
+        itemListElement: [
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Déménagement résidentiel' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Déménagement professionnel' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Emballage et transport' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Garde-meubles' } },
+        ],
+      },
     })
   }, [route])
 

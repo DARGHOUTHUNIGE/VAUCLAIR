@@ -69,7 +69,7 @@ const navItems: { label: string; path: Route }[] = [
 ]
 
 function VauclairLogo() {
-  return <img className="official-logo" src="/vauclair-logo.jpeg" alt="Vauclair Déménagement - Depuis 1995" />
+  return <img className="official-logo" src="/vauclair-logo.png" alt="Vauclair Déménagement - Depuis 1995" />
 }
 
 function isRoute(value: string): value is Route {
@@ -111,7 +111,7 @@ function App() {
     setMeta('meta[property="og:title"]', 'property', seo.title)
     setMeta('meta[property="og:description"]', 'property', seo.description)
     setMeta('meta[property="og:url"]', 'property', canonicalUrl)
-    setMeta('meta[property="og:image"]', 'property', `${officialOrigin}/vauclair-logo.jpeg`)
+    setMeta('meta[property="og:image"]', 'property', `${officialOrigin}/vauclair-logo.png`)
     setMeta('meta[name="twitter:card"]', 'name', 'summary')
     setMeta('meta[name="twitter:title"]', 'name', seo.title)
     setMeta('meta[name="twitter:description"]', 'name', seo.description)
@@ -137,7 +137,7 @@ function App() {
       name: 'Vauclair Déménagement',
       description: seo.description,
       telephone: '+33780971094',
-      image: `${officialOrigin}/vauclair-logo.jpeg`,
+      image: `${officialOrigin}/vauclair-logo.png`,
       url: officialOrigin,
       areaServed: 'France',
       priceRange: 'Sur devis',
@@ -205,9 +205,9 @@ function Home({ navigate }: { navigate: (path: Route) => void }) {
           <p className="hero-lead">Vauclair Déménagement accompagne les particuliers et les professionnels avec sérieux, organisation et savoir-faire.</p>
           <div className="hero-actions">
             <button className="button button-dark" onClick={() => navigate('/devis')}>Obtenir mon devis <span>→</span></button>
-            <button className="text-button" onClick={() => navigate('/services')}>Découvrir nos services <span>↗</span></button>
+            <a className="phone-button" href="tel:+33780971094">Appeler le 07 80 97 10 94 <span>☎</span></a>
           </div>
-          <div className="trust-row"><span className="avatars">● ● ●</span><span><strong>Une équipe à votre écoute</strong><br />Particuliers & entreprises</span></div>
+          <div className="trust-row"><span className="trust-check">✓</span><span><strong>Devis gratuit et sans engagement</strong><br />Réponse personnalisée pour particuliers & entreprises</span></div>
         </div>
         <div className="hero-art" role="img" aria-label="Équipe Vauclair charge un camion de déménagement">
           <div className="sun-shape" />
@@ -221,10 +221,10 @@ function Home({ navigate }: { navigate: (path: Route) => void }) {
     <section className="service-preview"><div className="container"><div className="section-heading"><div><div className="section-label">02 / Nos services</div><h2>Tout ce qu’il faut<br /><i>pour déménager serein.</i></h2></div><button className="text-button" onClick={() => navigate('/services')}>Toutes nos prestations <span>↗</span></button></div><div className="service-grid">{featuredServices.map((service) => <ServiceCard key={service.title} {...service} />)}</div></div></section>
     <section className="formula-section section"><div className="container"><div className="section-heading"><div><div className="section-label">03 / Nos formules</div><h2>Quelle formule pour<br /><i>votre déménagement ?</i></h2><p className="section-text">Du plus simple au tout compris : choisissez, on s’occupe du reste.</p></div></div><div className="formula-grid">{formulas.map((formula) => <article className={`formula-card formula-${formula.name.toLowerCase()}${formula.name === 'Confort' ? ' is-featured' : ''}`} key={formula.name}><div className="formula-top"><div><h3>{formula.name}</h3><span>{formula.badge}</span></div></div><p className="formula-description">{formula.description}</p><strong className="formula-price">Sur devis <small>gratuit</small></strong><ul>{formula.features.map((feature) => <li key={feature}>✓ {feature}</li>)}</ul><button className="button button-dark" onClick={() => navigate('/devis')}>Demander un devis <span>→</span></button></article>)}</div></div></section>
     <section className="process-section container section"><div className="section-heading"><div><div className="section-label">04 / Notre méthode</div><h2>Simple, du premier<br /><i>appel aux dernières clés.</i></h2></div></div><div className="process-grid"><div><span>01</span><h3>On échange</h3><p>Nous écoutons votre projet et identifions vos besoins.</p></div><div><span>02</span><h3>On organise</h3><p>Vous recevez un devis clair et un planning précis.</p></div><div><span>03</span><h3>On s’occupe de tout</h3><p>Notre équipe prend le relais avec soin et efficacité.</p></div></div></section>
-    <section className="reviews-section"><div className="container"><div className="section-label">05 / Votre confiance</div><div className="review-grid"><blockquote><div className="stars">★★★★★</div><p>Vos témoignages clients pourront être ajoutés ici après validation.</p><footer>— Témoignage à intégrer <span>Client particulier</span></footer></blockquote><blockquote><div className="stars">★★★★★</div><p>Un espace prévu pour présenter des retours authentiques et vérifiables.</p><footer>— Témoignage à intégrer <span>Client professionnel</span></footer></blockquote><blockquote><div className="stars">★★★★★</div><p>Nous ne publions aucun avis inventé : vos expériences feront la différence.</p><footer>— À compléter <span>Avec votre accord</span></footer></blockquote></div></div></section>
+    <section className="trust-section"><div className="container"><div className="section-label">05 / Nos engagements</div><div className="trust-grid"><article><strong>01</strong><h3>Interlocuteur unique</h3><p>Un accompagnement clair avant, pendant et après votre déménagement.</p></article><article><strong>02</strong><h3>Protection des biens</h3><p>Des méthodes adaptées aux meubles, objets fragiles et accès difficiles.</p></article><article><strong>03</strong><h3>Organisation sur mesure</h3><p>Une prestation ajustée à votre volume, vos dates et votre budget.</p></article></div></div></section>
     <Faq />
-    <section className="cta-section"><div className="container cta-inner"><div><p className="eyebrow">Parlons de votre projet</p><h2>Prêt à déménager<br /><i>sereinement ?</i></h2></div><button className="button button-light" onClick={() => navigate('/devis')}>Demander mon devis <span>→</span></button></div></section>
-    <a className="mobile-call" href="tel:+33780971094">☎ Appeler maintenant · 07 80 97 10 94</a>
+    <section className="cta-section"><div className="container cta-inner"><div><p className="eyebrow">Parlons de votre projet</p><h2>Prêt à déménager<br /><i>sereinement ?</i></h2></div><div className="cta-actions"><button className="button button-light" onClick={() => navigate('/devis')}>Demander mon devis <span>→</span></button><a className="button button-outline-light" href="https://wa.me/33780971094" target="_blank" rel="noreferrer">WhatsApp <span>↗</span></a></div></div></section>
+    <div className="mobile-actions" aria-label="Actions de contact"><a href="tel:+33780971094">☎ Appeler</a><a href="https://wa.me/33780971094" target="_blank" rel="noreferrer">WhatsApp</a></div>
   </>
 }
 
